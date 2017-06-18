@@ -1,0 +1,16 @@
+{% block title %}
+    {{ user }}
+{% endblock %}
+
+{% block body %}
+    <h2>Informations</h2>
+    <tr>
+        <th>Pseudo</th>
+        <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <th>Âge</th>
+        <td>{{ user.birthday|age }}</td>
+    </tr>
+    <a href="{{ path('', {id: user.id}) }}">Like</a>
+{% endblock %}
