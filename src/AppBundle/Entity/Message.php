@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\User;
 
 /**
  * Message
@@ -29,11 +30,18 @@ class Message
     private $text;
 
     /**
-     * @var
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\MessageUsers", inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
-    private $messageUsers;
+    private $sender;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     */
+    private $receiver;
 
     /**
      * Get id
@@ -68,5 +76,52 @@ class Message
     {
         return $this->text;
     }
-}
 
+    /**
+     * Set sender
+     *
+     * @param \AppBundle\Entity\User $sender
+     *
+     * @return Message
+     */
+    public function setSender(\AppBundle\Entity\User $sender = null)
+    {
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set receiver
+     *
+     * @param \AppBundle\Entity\User $receiver
+     *
+     * @return Message
+     */
+    public function setReceiver(\AppBundle\Entity\User $receiver = null)
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    /**
+     * Get receiver
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
+}

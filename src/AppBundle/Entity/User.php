@@ -78,17 +78,9 @@ class User
     private $longitude;
 
     /**
-     * @var
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\MessageUsers", inversedBy="user")
      */
-    private $messageUsers;
-
-    /**
-     *
-     * @ORM\OneToOne(targetEntity="AppBundle\Filters", cascade={"persist"))
-     */
-    private $filter;
+    private $filters;
 
     /**
      * Get id
@@ -292,4 +284,3 @@ class User
         return $this->longitude;
     }
 }
-

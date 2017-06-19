@@ -5,9 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class UserMessageType extends AbstractType
+class UserLikingType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,12 +16,17 @@ class UserMessageType extends AbstractType
     {
         if (true)
         {
-            $builder->add('message',  TextType::class, array('required' => false));
+            $builder->add('message',  ChoiceType::class, array('required' => false,
+                                                                           'choices'  => array(
+                                                                               'Dislike' => 2,
+                                                                               'Like'    => 1)
+                                                                          )
+            );
         }
-        else
+        /*else
         {
-            echo "You cannot communicate with a person that hasn't liked you back yet!";
-        }
+            throw exception
+        }*/
     }
 
     /**
